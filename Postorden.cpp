@@ -13,7 +13,7 @@ Arbol *newnodo(int);
 
 void insertar(Arbol *&,int);
 void mostrar(Arbol *,int);
-void InOrden(Arbol *);
+void PostOrden(Arbol *);
 
 Arbol *rama=NULL;
 
@@ -24,7 +24,7 @@ int main(){
 		cout<<"\t ELIJA ALGUNA OPCION DEL MENÚ\n";
 		cout<<"\t1.- Insertar Nodos  al Arból \n";
 		cout<<"\t2.- Mostrar Arból \n";
-		cout<<"\t3.- Recorrido En InOrden \n";
+		cout<<"\t3.- Recorrido En PostOrden \n";
 		cout<<"\t4.- Salir \n";
 		cin>>opc;
 		switch(opc){
@@ -45,8 +45,8 @@ int main(){
 				system ("pause");
 				break;
 			case 3:
-				cout<<" EL RECORRIDO EN IN ORDEN ES : \n";
-				InOrden(rama);
+				cout<<" EL RECORRIDO EN POSTORDEN ES : \n";
+				PostOrden(rama);
 				cout<<"\n";
 				system("pause");
 				break;
@@ -100,14 +100,14 @@ void mostrar(Arbol *rama, int cont){
 	}
 }
 
-void InOrden(Arbol *rama){
+void PostOrden(Arbol *rama){
 	if(rama==NULL){// si arbol vacio
 		return;
 	}
 	else{
-		InOrden(rama->izq);
+		PostOrden(rama->izq);
+		PostOrden(rama->dere);
 		cout<<rama->valor<<" - ";
-		InOrden(rama->dere);
 		
 	}
 }
